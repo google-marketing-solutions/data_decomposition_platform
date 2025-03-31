@@ -16,7 +16,7 @@
 
 import functools
 import textwrap
-from typing import Any, Callable, Final, Literal, Mapping
+from typing import Any, Final, Literal, Mapping
 
 import jax
 import jax.numpy as jnp
@@ -100,7 +100,7 @@ class BayesianModel:
       *,
       dataset: preprocessors.BayesianDataInstance,
       unique_shared_ids_count: int,
-  ) -> Callable[[Any], Any]:
+  ) -> Any:
     """Defines a NumPyro model to use in the simulation.
 
     Args:
@@ -110,7 +110,7 @@ class BayesianModel:
         later used to describe the concentration in the Dirichlet distribution.
 
     Returns:
-      A NumPyro model to be used in NUTS kernel.
+      Predictions from the model.
     """
     weights = numpyro.sample(
         name="weights",
