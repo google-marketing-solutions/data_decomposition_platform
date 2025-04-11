@@ -18,6 +18,7 @@ import dataclasses
 
 from absl.testing import absltest
 from absl.testing import parameterized
+import jax
 import jax.numpy as jnp
 import numpy as np
 import pandas as pd
@@ -25,6 +26,9 @@ import tensorflow as tf
 
 from disaggregator import methods
 from disaggregator import preprocessors
+
+jax.config.update("jax_threefry_partitionable", False)
+
 
 _TEST_WARMUP_STEPS = 1
 _TEST_SAMPLES = 1
